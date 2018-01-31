@@ -5,13 +5,6 @@ public void setup() {
   size(400,400);
 }
 public void draw() {
-  /*fill(255);
-  triangle(0,0,50,100,100,0);
-  fill(0);
-  triangle(0,0,25,50,50,0);
-  triangle(50,0,75,50,100,0);
-  triangle(50,100,75,50,25,50);*/
-  //triangleDraw(200,200,200);
   background(#C1B7B7);
   triangleDraw(x,y,len);
 }
@@ -19,14 +12,24 @@ public void mousePressed() {
   len+=20;
   x-=10;
   y-=10;
+  if (len >= 420) {
+    len = 20;
+    x=190;
+    y=190;
+  }
 }
 public void triangleDraw(int x, int y, int len) {
   if (len < 20) {
+    fill(255,255,255);
     triangle(x,y,x+len,y,x+len/2,y+len);
   }
   else {
     triangleDraw(x,y,len/2);
     triangleDraw(x+len/2,y,len/2);
     triangleDraw(x+len/4,y+len/2,len/2);
+    fill(255,255,255);
+    ellipse(x+len/2,y+len/3,len/3,len/4);
+    fill(0);
+    ellipse(x+len/2,y+len/3,len/8,len/8);
   }
 }
